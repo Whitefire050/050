@@ -5,28 +5,42 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <body>
 <!-- 1 -->
     <img src="https://media.istockphoto.com/id/1439436349/zh/%E7%85%A7%E7%89%87/red-apple-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=612x612&w=0&k=20&c=ILEPQQFyPEjGjXxIejezesjqCUf_8lpO-rdH6hgl-WQ=" alt="W3Schools.com" width="104" height="142">
 <!-- 2 -->
-<div id="myPlot" style="width:100%;max-width:700px"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+<body>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
 <script>
-const xArray = ["Italy", "France", "Spain", "USA", "Argentina"];
-const yArray = [55, 49, 44, 24, 15];
+const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+const yValues = [55, 49, 44, 24, 15];
+const barColors = ["red", "green","blue","orange","brown"];
 
-const data = [{
-  x:xArray,
-  y:yArray,
-  type:"bar",
-  orientation:"v",
-  marker: {color:"rgba(0,0,255,0.6)"}
-}];
+const ctx = document.getElementById('myChart');
 
-const layout = {title:"World Wide Wine Production"};
-
-Plotly.newPlot("myPlot", data, layout);
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "World Wine Production 2018",
+        font: {size: 16}
+      }
+    }
+  }
+});
 </script>
 <!-- 3 -->
  <head>
